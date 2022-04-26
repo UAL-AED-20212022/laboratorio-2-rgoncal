@@ -3,10 +3,12 @@ from models.LinkedList import LinkedList
 
 
 def main():
-
     lista_ligada = LinkedList()
     while True:
-        comandos = input().split()
+        try:
+            comandos = input().split()
+        except EOFError:
+            return
         if comandos[0] == "RPI":
             RPI(comandos[1], lista_ligada)
         elif comandos[0] == "RPF":
@@ -29,13 +31,12 @@ def main():
             EP(comandos[1], lista_ligada)
 
 
-
-def RPI(pais, lista_ligada):
-    lista_ligada.insert_at_start(pais)
+def RPI(país, lista_ligada):
+    lista_ligada.insert_at_start(país)
     lista_ligada.traverse_list()
 
-def RPF(pais, lista_ligada):
-    lista_ligada.insert_at_end(pais)
+def RPF(país, lista_ligada):
+    lista_ligada.insert_at_end(país)
     lista_ligada.traverse_list()
 
 def RPDE(pais_registado, pais_novo, lista_ligada):
